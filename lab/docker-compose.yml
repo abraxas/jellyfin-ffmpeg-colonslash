@@ -1,0 +1,23 @@
+name: jellyfin-ffmpeg-colonslash
+
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:12.2
+    init: true
+    user: "0:0"
+    ports:
+      - "127.0.0.1:18810:8096"
+    environment:
+      JELLYFIN_PublishedServerUrl: http://127.0.0.1:18810
+    volumes:
+      - jf-config:/config
+      - jf-cache:/cache
+      - jf-media:/media
+    labels:
+      lab: jellyfin-ffmpeg-colonslash
+    restart: "no"
+
+volumes:
+  jf-config:
+  jf-cache:
+  jf-media:
